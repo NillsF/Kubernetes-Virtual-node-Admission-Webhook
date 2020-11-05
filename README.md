@@ -1,6 +1,8 @@
+# This is work in progress!
+
 # Kubernetes Virtual node Admission Webhook
 
-This Kubernetes Admission adds pod affinity and toleration key/values to all pods in a correctly labeled namespace
+The goal of this admission webhook is to add affinity / tolerations on pods only when current nodes cannot support the workload.
 
 ## Project State
 
@@ -39,6 +41,7 @@ spec:
 ## Attribution
 
 This projects uses the upstream examples found in the following repos:
+* https://github.com/Azure-Samples/virtual-node-autoscale
 * https://github.com/caesarxuchao/example-webhook-admission-controller
 * https://github.com/kubernetes/kubernetes/tree/release-1.9/test/images/webhook
 
