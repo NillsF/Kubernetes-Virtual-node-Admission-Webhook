@@ -35,10 +35,10 @@ jobs:
         run: az login --service-principal --username ${{ secrets.APP_ID }} --password ${{ secrets.PASSWORD }} --tenant ${{ secrets.TENANT_ID }} 
         
       - name: Build Docker Container
-        run: docker build . -t nfvnas.azurecr.io/devopsoh/vk-admission:${{ github.run_number }}
+        run: docker build . -t nfvnas.azurecr.io/vk-admission/vk-admission:${{ github.run_number }}
 
       - name: ACR login
         run: az acr login -n nfvnas
 
       - name: Push container
-        run: docker push nfvnas.azurecr.io/devopsoh/vk-admission:${{ github.run_number }}
+        run: docker push nfvnas.azurecr.io/vk-admission/vk-admission:${{ github.run_number }}
