@@ -2,9 +2,9 @@ FROM golang:1.10-alpine as build
 
 RUN apk --update add gcc libc-dev
 
-ADD . /go/src/github.com/lachie83/vn-affinity-admission-controller
+ADD . /go/src/github.com/vn-affinity-admission-controller
 
-WORKDIR /go/src/github.com/lachie83/vn-affinity-admission-controller
+WORKDIR /go/src/github.com/vn-affinity-admission-controller
 
 RUN go build -buildmode=pie -ldflags "-linkmode external -extldflags -static -w" -o vn-affinity-admission-controller
 
@@ -20,6 +20,6 @@ USER 1
 
 EXPOSE 8443
 
-COPY --from=build /go/src/github.com/lachie83/vn-affinity-admission-controller/vn-affinity-admission-controller /
+COPY --from=build /go/src/github.com/vn-affinity-admission-controller/vn-affinity-admission-controller /
 
 CMD ["/vn-affinity-admission-controller","--logtostderr","-v=4","2>&1"]
